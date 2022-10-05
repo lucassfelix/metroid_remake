@@ -2,7 +2,7 @@ extends Control
 
 var child : Node
 
-var player : PackedScene = preload("res://Scenes/Prefabs/Player.tscn")
+var player : PackedScene = preload("res://Scenes/Prefabs/PlayerAnim.tscn")
 
 func _on_Button_pressed():
 	if !is_instance_valid(child):
