@@ -1,3 +1,23 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource path="res://Scripts/Beam.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Beam/beam.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Beam/beam_explosion.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2, 2.5 )
+
+[node name="Beam" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource( 1 )
+beam_texture = ExtResource( 2 )
+explosion_texture = ExtResource( 3 )
+
+[node name="beam_shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 1 )
+
+[node name="beam_sprite" type="Sprite" parent="."]
+position = Vector2( -368, 530 )
+texture = ExtResource( 2 )
+offset = Vector2( 368, -530 )
