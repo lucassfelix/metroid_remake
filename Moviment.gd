@@ -1,8 +1,9 @@
+
 extends KinematicBody2D
 
 export (int) var speed = 250
 export var rotation_speed = 1.5
-export var gravity = 3000
+export var gravity = 2500
 export var jump_speed = 1000
 
 export (PackedScene) var box2 : PackedScene
@@ -11,51 +12,53 @@ var velocity = Vector2()
 var rotation_dir = 0 # ang. inicial de rotação
 
 onready var target := position # alvo inicial é a própria posição
+onready var player := $Player
 
 func _ready() -> void:
-	rotation_degrees = 0
+	player.rotation_degrees = 0
+	player.stop()
 	#target = position
 	
 # Usada apenas para o modo de point-and-click
-#func _input(event):
-#	if event.is_action_pressed("click"):
-#		target = get_global_mouse_position()
-#
-#func get_rotate_mouse_input():
-#	look_at(get_global_mouse_position())
-#	rotation_degrees += 90
-#	velocity = Vector2()
-#	if Input.is_action_pressed("down"):
-#		velocity = Vector2(0, speed).rotated(rotation)
-#	if Input.is_action_pressed("up"):
-#		velocity = Vector2(0, -speed).rotated(rotation)
-#
-#func get_rotate_input():
-#	rotation_dir = 0
-#	velocity = Vector2.ZERO
-#	rotation_dir = Input.get_action_strength("right")-Input.get_action_strength("left")
-#	if Input.is_action_pressed("down"):
-#		velocity = Vector2(0, speed).rotated(rotation)
-#	if Input.is_action_pressed("up"):
-#		velocity = Vector2(0, -speed).rotated(rotation)
+func _input(event):
+	if event.is_action_pressed("click"):
+		target = get_global_mouse_position()
+	
+func get_rotate_mouse_input():
+	look_at(get_global_mouse_position())
+	rotation_degrees += 90
+	velocity = Vector2()
+	if Input.is_action_pressed("down"):
+		velocity = Vector2(0, speed).rotated(rotation)
+	if Input.is_action_pressed("up"):
+		velocity = Vector2(0, -speed).rotated(rotation)
+		
+func get_rotate_input():
+	rotation_dir = 0
+	velocity = Vector2.ZERO
+	rotation_dir = Input.get_action_strength("right")-Input.get_action_strength("left")
+	if Input.is_action_pressed("down"):
+		velocity = Vector2(0, speed).rotated(rotation)
+	if Input.is_action_pressed("up"):
+		velocity = Vector2(0, -speed).rotated(rotation)
 		
 func get_8way_input():
 	#velocity = Vector2.ZERO
 	velocity.x = Input.get_action_strength("right")-Input.get_action_strength("left")
 	velocity.y = Input.get_action_strength("down")-Input.get_action_strength("up")
 	velocity = velocity.normalized() * speed
-#	if velocity.x < 0:
-#		play("walk-left")
-#	elif velocity.x > 0:
-#		play("walk-right")
-#	elif velocity.y > 0:
-#		play("walk-down")
-#	elif velocity.y < 0:
-#		play("walk-up")
-#	else:
-#		#player.animation = "walk-down"
-#		frame = 0
-#		stop()
+	if velocity.x < 0:
+		player.play("walk-left")
+	elif velocity.x > 0:
+		player.play("walk-right")
+	elif velocity.y > 0:
+		player.play("walk-down")
+	elif velocity.y < 0:
+		player.play("walk-up")
+	else:
+		#player.animation = "walk-down"
+		player.frame = 0
+		player.stop()
 		
 func get_side_input():
 	
@@ -72,28 +75,28 @@ func get_side_input():
 	
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = -jump_ajust
-#		get_tree().call_group("HUD", "updateScore", 2)
-#		var b := box2.instance()
-#		b.position = global_position
-#		owner.add_child(b)
+		get_tree().call_group("HUD", "updateScore", 2)
+		var b := box2.instance()
+		b.position = global_position
+		owner.add_child(b)
 		
-#	if velocity.x < 0:
-#		player.play("walk-left")
-#	elif velocity.x > 0:
-#		player.play("walk-right")
-#	else:
-#		#player.animation = "walk-down"
-#		player.frame = 0
-#		player.stop()
+	if velocity.x < 0:
+		player.play("walk-left")
+	elif velocity.x > 0:
+		player.play("walk-right")
+	else:
+		#player.animation = "walk-down"
+		player.frame = 0
+		player.stop()
 		
-#	if Input.is_action_pressed("destroy"):
-#		get_tree().call_group("boxes", "queue_free")
+	if Input.is_action_pressed("destroy"):
+		get_tree().call_group("boxes", "queue_free")
 
 func calc_velocity_click():
 	velocity = position.direction_to(target) * speed
 	
 func _physics_process(delta):
-	get_8way_input()
+	#get_8way_input()
 	get_side_input()
 	#get_rotate_input()
 	#get_rotate_mouse_input()
