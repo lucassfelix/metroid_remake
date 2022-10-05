@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Beam",
+"language": "GDScript",
+"path": "res://Scripts/Beam.gd"
+}, {
+"base": "Node",
+"class": "Cannon",
+"language": "GDScript",
+"path": "res://Scripts/Cannon.gd"
+}, {
 "base": "Node",
 "class": "Enemy",
 "language": "GDScript",
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://Scripts/State.gd"
 } ]
 _global_script_class_icons={
+"Beam": "",
+"Cannon": "",
 "Enemy": "",
 "State": ""
 }
