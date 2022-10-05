@@ -9,13 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Beam",
+"language": "GDScript",
+"path": "res://Scripts/Beam.gd"
+}, {
+"base": "Node",
+"class": "Cannon",
+"language": "GDScript",
+"path": "res://Scripts/Cannon.gd"
+}, {
 "base": "Node",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://Scripts/Enemy.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://Scripts/State.gd"
 } ]
 _global_script_class_icons={
-"Enemy": ""
+"Beam": "",
+"Cannon": "",
+"Enemy": "",
+"State": ""
 }
 
 [application]
