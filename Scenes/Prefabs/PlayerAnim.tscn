@@ -14,6 +14,4 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
-animation = "walk"
-frame = 1
-speed_scale = 4.0
+animation = "walk and shoot"
