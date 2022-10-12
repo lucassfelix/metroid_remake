@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/Beam.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/PlayerControl/Beam.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Beam/beam.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Beam/beam_explosion.png" type="Texture" id=3]
 
