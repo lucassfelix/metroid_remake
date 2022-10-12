@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=12 format=2]
+[gd_resource type="SpriteFrames" load_steps=17 format=2]
 
 [ext_resource path="res://Sprites/Samus/Samus.png" type="Texture" id=2]
 
@@ -14,9 +14,29 @@ region = Rect2( 160, 8, 32, 32 )
 atlas = ExtResource( 2 )
 region = Rect2( 160, 48, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 88, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 40, 88, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 88, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 120, 88, 32, 32 )
+
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 48, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 8, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
@@ -56,13 +76,18 @@ animations = [ {
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "jump and shoot",
+"name": "jump-shoot",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "jump-spin",
+"speed": 30.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 15 ) ],
 "loop": true,
 "name": "shoot",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
@@ -71,6 +96,6 @@ animations = [ {
 }, {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
-"name": "walk and shoot",
+"name": "walk-shoot",
 "speed": 15.0
 } ]

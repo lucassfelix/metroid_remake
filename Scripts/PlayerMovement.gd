@@ -10,9 +10,9 @@ var jumping = false
 
 func get_input():
 	velocity.x = 0
-	var right = Input.is_action_pressed('right')
-	var left = Input.is_action_pressed('left')
-	var jump = Input.is_action_just_pressed('up')
+	var right = Input.is_action_pressed("walk_right")
+	var left = Input.is_action_pressed("walk_left")
+	var jump = Input.is_action_just_pressed("jump")
 
 	if jump and is_on_floor():
 		jumping = true
@@ -23,6 +23,11 @@ func get_input():
 		velocity.x -= run_speed
 
 func _physics_process(delta):
+	
+	if is_on_floor():
+		$AnimatedSprite.grounded()
+		
+	
 	get_input()
 	velocity.y += gravity * delta
 	if jumping and is_on_floor():
