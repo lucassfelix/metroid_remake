@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/Enemies/ZoomerSprite.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+extents = Vector2( 8, 7 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
@@ -25,6 +25,7 @@ animations = [ {
 [node name="Zoomer" type="Area2D"]
 collision_layer = 2
 collision_mask = 13
+input_pickable = false
 script = ExtResource( 1 )
 speed = 50.0
 
@@ -34,6 +35,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "walk"
+frame = 2
 playing = true
 
 [node name="CheckGroundBack" type="RayCast2D" parent="."]
@@ -42,7 +44,6 @@ enabled = true
 cast_to = Vector2( 0, 12 )
 collision_mask = 4
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="CheckGroundFront" type="RayCast2D" parent="."]
 position = Vector2( 9, 0 )
@@ -50,4 +51,3 @@ enabled = true
 cast_to = Vector2( 0, 12 )
 collision_mask = 4
 collide_with_areas = true
-collide_with_bodies = false
