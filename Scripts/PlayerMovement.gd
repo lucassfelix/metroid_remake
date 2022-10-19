@@ -27,7 +27,6 @@ func _physics_process(delta):
 	if is_on_floor():
 		$AnimatedSprite.grounded()
 		
-	
 	get_input()
 	velocity.y += gravity * delta
 	if jumping and is_on_floor():
