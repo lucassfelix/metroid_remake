@@ -34,9 +34,9 @@ func _process(delta):
 	elif shoot and walk_left and _grounded:
 		play("walk-shoot")
 		flip_h = true
-	elif shoot and flip_h == false:
+	elif shoot and _grounded and flip_h == false:
 		play("shoot")
-	elif shoot and flip_h == true:
+	elif shoot and _grounded and flip_h == true:
 		play("shoot")
 		
 #	# Aiming
@@ -48,17 +48,17 @@ func _process(delta):
 #		offset.y = spr_offset
 
 	# Not shooting
-	elif jump and walk_right and !_grounded:
+	elif walk_right and !_grounded:
 		play("jump-spin")
 		flip_h = false
-	elif jump and walk_left and !_grounded:
+	elif walk_left and !_grounded:
 		play("jump-spin")
 		flip_h = true
 	elif jump and _grounded:
 		_grounded = false
 		play("jump")
 	
-	# No chão
+	# Grounded
 	elif walk_right and _grounded:
 		play("walk")
 		flip_h = false
