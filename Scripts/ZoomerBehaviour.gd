@@ -29,14 +29,12 @@ func _check_raycasts():
 		waiting_back = false
 
 func _spin_left():
-	print("Girou para a esquerda.")		
 	var angle := -90
 	direction = direction.rotated(deg2rad(angle))
 	
 	global_rotation_degrees += angle
 
 func _spin_right():
-	print("Girou para a direita.")	
 	var angle := 90
 	direction = direction.rotated(deg2rad(angle))
 	global_rotation_degrees += angle	
