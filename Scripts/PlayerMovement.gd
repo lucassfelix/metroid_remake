@@ -19,15 +19,20 @@ func get_input():
 		velocity.y = -jump_speed
 	if right:
 		velocity.x += run_speed
+		$AnimatedSprite.flip_h = false
 	if left:
 		velocity.x -= run_speed
+		$AnimatedSprite.flip_h = true
 
 func _physics_process(delta):
 	
 	if is_on_floor():
-		$AnimatedSprite.grounded()
-		
+		$AnimatedSprite.set_grounded(true)
+	else:
+		$AnimatedSprite.set_grounded(false)
+	
 	get_input()
+	
 	velocity.y += gravity * delta
 	if jumping and is_on_floor():
 		jumping = false
