@@ -13,6 +13,8 @@ var HITSTOP_TIME : float = 0.2
 
 func _ready() -> void:
 	var _err := connect("area_entered",self,"_on_collision")
+	_err = connect("body_entered",self,"_on_collision_body")
+	
 	pass
 	
 func _hitstop():
@@ -31,8 +33,14 @@ func take_damage(var damage_taken : int) -> void:
 	pass
 
 func _on_collision(area : Area2D):
-	print("Colisão",area)
+	print("Colisão de Area",area)
 	if area.collision_layer == 8:
+		take_damage(1)
+	pass	
+
+func _on_collision_body(node : Node):
+	print("Colisão de Body",node)
+	if node.collision_layer == 8:
 		take_damage(1)
 	pass	
 
