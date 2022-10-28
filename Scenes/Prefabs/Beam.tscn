@@ -7,8 +7,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 2.5 )
 
-[node name="Beam" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="Beam" type="Area2D"]
+collision_layer = 8
+collision_mask = 6
 script = ExtResource( 1 )
 beam_texture = ExtResource( 2 )
 explosion_texture = ExtResource( 3 )
