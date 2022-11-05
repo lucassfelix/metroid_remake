@@ -9,6 +9,9 @@ export var direction : Vector2 = Vector2.RIGHT
 export var invincible : bool = false
 
 var _can_move := true
+
+var LAYER_BEAM : int = 8
+var LAYER_PLAYER : int = 1
 var HITSTOP_TIME : float = 0.2
 
 func _ready() -> void:
@@ -33,14 +36,14 @@ func take_damage(var damage_taken : int) -> void:
 	pass
 
 func _on_collision(area : Area2D):
-	print("Colisão de Area",area)
-	if area.collision_layer == 8:
+	print("Colisão de Area com ", area.name)
+	if area.collision_layer == LAYER_BEAM:
 		take_damage(1)
 	pass	
 
 func _on_collision_body(node : Node):
-	print("Colisão de Body",node)
-	if node.collision_layer == 8:
+	print("Colisão de Body com ", node.name)
+	if node.collision_layer == LAYER_BEAM:
 		take_damage(1)
 	pass	
 

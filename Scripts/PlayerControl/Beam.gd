@@ -23,9 +23,11 @@ func _physics_process(delta):
 	global_position = 	global_position + (_direction * speed * delta)
 
 func _on_collision(area : Area2D):
+	print("Collided.")
 	queue_free()
 	pass	
 
 func _on_collision_body(node : Node):
+	print("Collided.")	
 	queue_free()	
 	pass	

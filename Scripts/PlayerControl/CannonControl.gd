@@ -19,15 +19,20 @@ func delay_shot():
 	yield(get_tree().create_timer(DELAY_BETWEEN_SHOTS),"timeout");
 	can_shoot = true;
 
-func _process(delta):
-	var shoot_pressed = Input.is_action_pressed("shoot")
+func on_shoot_pressed():
 	
-	if shoot_pressed and can_shoot and concurrent_beams < 3:
+	if can_shoot and concurrent_beams < 3:
 		can_shoot = false
 		delay_shot()
 		increase_shots()
 		var new_beam : Beam = beam_prefab.instance()
-		new_beam.connect("body_entered",self,"decrease_shots")
-		new_beam.connect("area_entered",self,"decrease_shots")
+		var _err = new_beam.connect("body_entered",self,"decrease_shots")
+		_err = new_beam.connect("area_entered",self,"decrease_shots")
 		add_child(new_beam)
 		new_beam.init(Vector2.RIGHT)
+	
+func _process(delta):
+	var shoot_pressed = Input.is_action_pressed("shoot")
+	
+	if shoot_pressed:
+		on_shoot_pressed()
