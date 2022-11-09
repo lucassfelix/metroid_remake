@@ -13,6 +13,9 @@ func get_input():
 	var right = Input.is_action_pressed("walk_right")
 	var left = Input.is_action_pressed("walk_left")
 	var jump = Input.is_action_just_pressed("jump")
+	var aim = Input.is_action_pressed("aim_up")
+
+	$Cannon.set_beam_direction($AnimatedSprite.flip_h,aim)		
 
 	if jump and is_on_floor():
 		jumping = true
@@ -24,15 +27,16 @@ func get_input():
 		velocity.x -= run_speed
 		$AnimatedSprite.flip_h = true
 
-func _physics_process(delta):
+func _process(delta):
+	get_input()
 	
+func _physics_process(delta):
+		
 	if is_on_floor():
 		$AnimatedSprite.set_grounded(true)
 	else:
 		$AnimatedSprite.set_grounded(false)
-	
-	get_input()
-	
+
 	velocity.y += gravity * delta
 	if jumping and is_on_floor():
 		jumping = false

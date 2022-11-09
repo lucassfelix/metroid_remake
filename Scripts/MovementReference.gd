@@ -3,7 +3,7 @@ extends KinematicBody2D
 export (int) var speed = 250
 export var rotation_speed = 1.5
 export var gravity = 2500
-export var jump_speed = 1000
+export var jump_speed = 100
 
 export (PackedScene) var box2 : PackedScene
 
