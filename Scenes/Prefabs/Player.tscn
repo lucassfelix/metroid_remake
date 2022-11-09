@@ -15,6 +15,7 @@ script = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "idle"
+flip_h = true
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -28,5 +29,16 @@ hframes = 5
 vframes = 3
 
 [node name="Cannon" type="Node2D" parent="."]
-position = Vector2( 12, -5 )
 script = ExtResource( 5 )
+
+[node name="RightPos" type="Node2D" parent="Cannon"]
+position = Vector2( 12, -5 )
+
+[node name="UpLeft" type="Node2D" parent="Cannon"]
+position = Vector2( -4, -17 )
+
+[node name="UpRight" type="Node2D" parent="Cannon"]
+position = Vector2( 4, -17 )
+
+[node name="LeftPos" type="Node2D" parent="Cannon"]
+position = Vector2( -12, -5 )

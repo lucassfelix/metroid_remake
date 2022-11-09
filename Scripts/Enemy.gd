@@ -51,11 +51,14 @@ func _process(_delta):
 	pass
 	
 func _physics_process(delta):
-	_movement(delta)
+	if _can_move:
+		_movement(delta)
 	
 func _movement(_delta : float):
 	pass
 	
 func _die() -> void:
+	#Death Animation
+	queue_free()
 	pass
 
