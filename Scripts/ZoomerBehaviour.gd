@@ -5,6 +5,7 @@ onready var _frontRaycast = $CheckGroundFront
 onready var _backRaycast = $CheckGroundBack
 
 var waiting_back := false
+var debugIncrement : Vector2
 
 func _ready():
 	pass
@@ -17,7 +18,8 @@ func _physics_process(delta):
 	_check_raycasts()
 	
 func _movement(delta : float):
-	global_position = 	global_position + (direction * speed * delta)
+	debugIncrement =  (direction * speed * delta) 
+	global_position = 	global_position + debugIncrement
 
 func _check_raycasts():
 	if !_frontRaycast.is_colliding():
