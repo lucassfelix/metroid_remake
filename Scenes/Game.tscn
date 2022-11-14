@@ -71,7 +71,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-run_speed = 24.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true

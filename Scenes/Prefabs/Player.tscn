@@ -12,6 +12,7 @@ extents = Vector2( 8, 16 )
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 7
 script = ExtResource( 3 )
+run_speed = 50.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )

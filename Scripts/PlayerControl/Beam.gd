@@ -36,7 +36,7 @@ func destroy_shot():
 	queue_free()
 
 func _on_collision(area : Area2D):
-	destroy_shot()
+	#destroy_shot()
 	pass	
 
 func _on_collision_body(node : Node):
