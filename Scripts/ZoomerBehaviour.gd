@@ -10,14 +10,19 @@ func _ready():
 	pass
 	
 func _process(delta):
-	._process(delta);
+	#Chamar a função pai no callback faz com que ela seja executada 2 vezes.	
+	#._process(delta);
+	pass
 	
 func _physics_process(delta):
-	._physics_process(delta)
+	#Chamar a função pai no callback faz com que ela seja executada 2 vezes.
+	#._physics_process(delta)
+	
 	_check_raycasts()
 	
 func _movement(delta : float):
-	global_position = 	global_position + (direction * speed * delta)
+	var increment = (direction * speed * delta) 
+	global_position = global_position + increment
 
 func _check_raycasts():
 	if !_frontRaycast.is_colliding():
