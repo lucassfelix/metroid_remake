@@ -1,26 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/ZoomerBehaviour.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Enemies/ZoomerSprite.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Prefabs/ZoomerScene.tres" type="SpriteFrames" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 7 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 8, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 24, 8, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 2 ), SubResource( 3 ) ],
-"loop": true,
-"name": "walk",
-"speed": 30.0
-} ]
 
 [node name="Zoomer" type="Area2D"]
 collision_layer = 2
@@ -33,9 +17,8 @@ speed = 32.0
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 4 )
+frames = ExtResource( 2 )
 animation = "walk"
-frame = 2
 playing = true
 
 [node name="CheckGroundBack" type="RayCast2D" parent="."]
