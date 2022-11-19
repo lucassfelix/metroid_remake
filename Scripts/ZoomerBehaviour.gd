@@ -9,12 +9,12 @@ var waiting_back := false
 func _ready():
 	pass
 	
-func _process(delta):
+func _process(_delta):
 	#Chamar a função pai no callback faz com que ela seja executada 2 vezes.	
 	#._process(delta);
 	pass
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	#Chamar a função pai no callback faz com que ela seja executada 2 vezes.
 	#._physics_process(delta)
 	

@@ -36,13 +36,13 @@ func take_damage(var damage_taken : int) -> void:
 	pass
 
 func _on_collision(area : Area2D):
-	print("Colisão de Area com ", area.name)
+	#print("Colisão de Area com ", area.name)
 	if area.collision_layer == LAYER_BEAM:
 		take_damage(1)
 	pass	
 
 func _on_collision_body(node : Node):
-	print("Colisão de Body com ", node.name)
+	#print("Colisão de Body com ", node.name)
 	if node.collision_layer == LAYER_BEAM:
 		take_damage(1)
 	pass	

@@ -41,10 +41,11 @@ func on_shoot_pressed():
 		delay_shot()
 		increase_shots()
 		var new_beam : Beam = beam_prefab.instance()
-		add_child(new_beam)
+		get_tree().get_root().get_child(0).add_child(new_beam)
 		#var _err = new_beam.connect("body_entered",self,"decrease_shots")
 		#_err = new_beam.connect("area_entered",self,"decrease_shots")
-		new_beam.init(_direction,self)
+		
+		new_beam.init(global_position,_direction,self)
 	
 func _process(delta):
 	var shoot_pressed = Input.is_action_pressed("shoot")
