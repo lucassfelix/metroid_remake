@@ -9,6 +9,7 @@ export var direction : Vector2 = Vector2.RIGHT
 export var invincible : bool = false
 
 var _can_move := true
+var _move_timer : float
 
 var LAYER_BEAM : int = 8
 var LAYER_PLAYER : int = 1
@@ -22,10 +23,9 @@ func _ready() -> void:
 	
 func _hitstop():
 	_can_move = false
-	_enable_movement(HITSTOP_TIME)
+	_move_timer = HITSTOP_TIME
 	
-func _enable_movement(time_s : float):
-	yield(get_tree().create_timer(time_s), "timeout")
+func _reenable_movement():
 	_can_move = true
 	
 func take_damage(var damage_taken : int) -> void:
@@ -51,6 +51,11 @@ func _process(_delta):
 	pass
 	
 func _physics_process(delta):
+	_move_timer -= delta
+	
+	if _move_timer <= 0:
+		_reenable_movement()
+	
 	if _can_move:
 		_movement(delta)
 	
