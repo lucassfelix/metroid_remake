@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://BrinstarTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Prefabs/ZoomerScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Prefabs/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Prefabs/HUD.tscn" type="PackedScene" id=4]
 
 [node name="Root" type="Control"]
 
@@ -19,3 +21,8 @@ position = Vector2( 88, 40 )
 
 [node name="Zoomer2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 184, 40 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 136, 175 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]

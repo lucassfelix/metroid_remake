@@ -40,9 +40,9 @@ func _physics_process(delta):
 	if is_on_floor():
 		$AnimatedSprite.set_grounded(true)
 	else:
+		direction.y += gravity * delta
 		$AnimatedSprite.set_grounded(false)
 
-	direction.y += gravity * delta
 
 	if jumping and is_on_floor():
 		jumping = false
