@@ -71,6 +71,10 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+jump_height = 3.3
+time_to_apex = 2.5
+downward_gravity_mult = 3.0
+rotation_speed = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true

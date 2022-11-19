@@ -48,9 +48,11 @@ func disable_shot():
 	disconnect("body_entered",self,"_on_collision_body")
 
 func _on_collision(area : Area2D):
+	$beam_sprite.texture = explosion_texture	
 	disable_shot()
 	pass	
 
 func _on_collision_body(node : Node):
+	$beam_sprite.texture = explosion_texture	
 	disable_shot()
 	pass	
