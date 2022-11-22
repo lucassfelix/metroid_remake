@@ -3,9 +3,7 @@
 [ext_resource path="res://Assets/theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/UI/HUDControl.gd" type="Script" id=2]
 
-[node name="HUD" type="Control"]
-margin_right = 64.0
-margin_bottom = 41.0
+[node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
 
 [node name="Energy_Label" type="Label" parent="."]
