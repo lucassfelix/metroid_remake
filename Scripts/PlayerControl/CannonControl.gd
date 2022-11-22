@@ -2,10 +2,13 @@ class_name CannonControl
 extends Node2D
 
 export var beam_prefab: PackedScene = preload("res://Scenes/Prefabs/Beam.tscn")
+export (Resource) var shootAudioEvent
 
 var can_shoot : bool = true;
 var concurrent_beams : int = 0
 var _direction : Vector2 = Vector2.RIGHT
+var _hold_timer : float
+
 
 func increase_shots():
 	concurrent_beams += 1
@@ -40,12 +43,18 @@ func on_shoot_pressed():
 		increase_shots()
 		var new_beam : Beam = beam_prefab.instance()
 		get_tree().get_root().get_child(0).add_child(new_beam)
-		#var _err = new_beam.connect("body_entered",self,"decrease_shots")
-		#_err = new_beam.connect("area_entered",self,"decrease_shots")
-		
+		AudioManager.play_sfx(shootAudioEvent)	
 		new_beam.init(global_position,_direction,self)
 	
-func _process(_delta):
+func _process(delta):
+	var shoot_just_pressed = Input.is_action_just_pressed("shoot")
 	var shoot_pressed = Input.is_action_pressed("shoot")
+	
 	if shoot_pressed:
+		_hold_timer -= delta
+		if _hold_timer <= 0:
+			on_shoot_pressed()
+	
+	if shoot_just_pressed:
+		_hold_timer = Constants.HOLD_DELAY
 		on_shoot_pressed()

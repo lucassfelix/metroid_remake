@@ -1,25 +1,35 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Sprites/Samus/SamusSpriteframes.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/PlayerAnimations/PlayerAnimation.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/PlayerControl/PlayerMovement.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/PlayerControl/PlayerEnergy.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/PlayerControl/CannonControl.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Utility/CameraControl.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Resources/AudioEvents/SFX/JumpSFX.tres" type="Resource" id=7]
+[ext_resource path="res://Assets/Resources/AudioEvents/SFX/BeamSFX.tres" type="Resource" id=8]
+[ext_resource path="res://Assets/Resources/AudioEvents/SFX/WalkSFX.tres" type="Resource" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 15.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 153.6, 236.25 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 6
 script = ExtResource( 3 )
 run_speed = 87.0
 jump_speed = 20
+jumpAudioEvent = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
-animation = "front"
 frame = 1
+animation = "idle"
+flip_h = true
 script = ExtResource( 2 )
+walkAudioEvent = ExtResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 6
@@ -35,18 +45,38 @@ shape = SubResource( 1 )
 
 [node name="Cannon" type="Node2D" parent="."]
 script = ExtResource( 5 )
+shootAudioEvent = ExtResource( 8 )
 
 [node name="RightPos" type="Node2D" parent="Cannon"]
 position = Vector2( 12, -5 )
 
 [node name="UpLeft" type="Node2D" parent="Cannon"]
-position = Vector2( -4, -17 )
+position = Vector2( -2, -18 )
 
 [node name="UpRight" type="Node2D" parent="Cannon"]
-position = Vector2( 4, -17 )
+position = Vector2( 2, -18 )
 
 [node name="LeftPos" type="Node2D" parent="Cannon"]
 position = Vector2( -12, -5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( -8, -55 )
+current = true
+process_mode = 0
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_top = 1.0
+drag_margin_bottom = 1.0
+editor_draw_drag_margin = true
+script = ExtResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+collision_layer = 16
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2( -8, -49 )
+shape = SubResource( 2 )
 
 [connection signal="enemy_contact" from="Area2D" to="." method="_on_enemy_contact"]
 [connection signal="health_changed" from="Area2D" to="." method="_on_Area2D_health_changed"]

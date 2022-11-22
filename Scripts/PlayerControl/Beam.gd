@@ -8,7 +8,7 @@ export var damage : int = 1;
 export var beam_texture : Texture;
 export var explosion_texture : Texture;
 
-var _lifetime : float = 0.2
+var _lifetime : float = Constants.BEAM_LIFETIME
 var _cannon : Node;
 var _direction : Vector2;
 var _disabled : bool
