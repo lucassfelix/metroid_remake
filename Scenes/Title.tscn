@@ -1,9 +1,43 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scripts/UI/TitleManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Resources/AudioEvents/Music/TitleMusic.tres" type="Resource" id=2]
 [ext_resource path="res://Assets/Sprites/UI/Title screen.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Star.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Prefabs/Star.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sprites/UI/Blink.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/UI/Text.png" type="Texture" id=6]
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 256, 240 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 257, 0, 256, 240 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 5 )
+region = Rect2( 514, 0, 256, 240 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 771, 0, 256, 240 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 1028, 0, 256, 240 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 1285, 0, 256, 240 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 1542, 0, 256, 240 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 5 )
+region = Rect2( 1799, 0, 256, 240 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -37,27 +71,48 @@ region = Rect2( 1542, 0, 256, 240 )
 atlas = ExtResource( 3 )
 region = Rect2( 1799, 0, 256, 240 )
 
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 256, 240 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 6 )
+region = Rect2( 257, 0, 256, 240 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 6 )
+region = Rect2( 514, 0, 256, 240 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 6 )
+region = Rect2( 771, 0, 256, 240 )
+
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": false,
+"name": "blink-in",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 1 ) ],
+"loop": false,
+"name": "blink-out",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": false,
 "name": "default",
+"speed": 4.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": false,
+"name": "text",
 "speed": 2.0
 } ]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="Title" type="Control" parent="."]
-margin_right = 256.0
-margin_bottom = 240.0
-script = ExtResource( 1 )
-titleSong = ExtResource( 2 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Title"]
-position = Vector2( 128, 120 )
-frames = SubResource( 9 )
 
 [node name="Stars" type="Node" parent="."]
 
@@ -88,6 +143,39 @@ position = Vector2( 240, 120 )
 [node name="Star9" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( 224, 152 )
 
+[node name="Star20" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 192, 96 )
+
+[node name="Star21" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 176, 64 )
+
+[node name="Star22" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 144, 96 )
+
+[node name="Star29" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 160, 120 )
+
+[node name="Star30" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 112, 144 )
+
+[node name="Star23" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 104, 112 )
+
+[node name="Star24" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 112, 64 )
+
+[node name="Star25" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 80, 88 )
+
+[node name="Star26" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 48, 72 )
+
+[node name="Star27" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 240, 96 )
+
+[node name="Star28" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( 64, 120 )
+
 [node name="Star10" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( 216, 160 )
 
@@ -117,3 +205,14 @@ position = Vector2( 16, 112 )
 
 [node name="Star19" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( 8, 40 )
+
+[node name="Title" type="Control" parent="."]
+margin_right = 256.0
+margin_bottom = 240.0
+script = ExtResource( 1 )
+titleSong = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Title"]
+position = Vector2( 128, 120 )
+z_index = 1
+frames = SubResource( 9 )
