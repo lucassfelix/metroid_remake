@@ -1,12 +1,21 @@
 extends AnimatedSprite
 
 var speed : float = 100
-
 var _grounded : bool
+var _walked : bool
+var _shouldWalk : bool
+
+export (Resource) var walkAudioEvent
 
 func _ready():
-	var _grounded = true
+	_grounded = true
 
+func _walking_sound():
+	#AudioManager.play_sfx(walkAudioEvent)
+	_walked = true
+	#yield(get_tree().create_timer(0.2),"timeout")
+	_walked = false
+	
 func _process(_delta):
 	var walk_right = Input.is_action_pressed("walk_right")
 	var walk_left = Input.is_action_pressed("walk_left")
@@ -28,8 +37,12 @@ func _process(_delta):
 		play("aim-up-jump")
 	elif aim and walk_right and _grounded:
 		play("aim-up-walk")
+		_shouldWalk = true
+		
 	elif aim and walk_left and _grounded:
 		play("aim-up-walk")
+		_shouldWalk = true
+		
 	elif aim and _grounded:
 		play("aim-up")
 
@@ -44,8 +57,12 @@ func _process(_delta):
 	# Shooting on floor
 	elif shoot and walk_right and _grounded:
 		play("walk-shoot")
+		_shouldWalk = true
+		
 	elif shoot and walk_left and _grounded:
 		play("walk-shoot")
+		_shouldWalk = true
+		
 	elif shoot and _grounded:
 		play("shoot")
 
@@ -62,14 +79,19 @@ func _process(_delta):
 		play("jump")
 	elif walk_right and _grounded:
 		play("walk")
+		_shouldWalk = true
 	elif walk_left and _grounded:
 		play("walk")
+		_shouldWalk = true
+		
 
 	elif _grounded:
 		play("idle")
 		spr_offset = 0
 		offset.y = spr_offset
 
+	if _shouldWalk and !_walked:
+		_walking_sound() 
 
 func set_grounded(value : bool):
 	_grounded = value

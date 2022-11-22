@@ -6,21 +6,28 @@ export var health : int = 2
 export var damage: int = 8
 export var speed: float = 4
 export var direction : Vector2 = Vector2.RIGHT
-export var invincible : bool = false
+export (Resource) var hitAudioEvent
 
-var _can_move := true
+var _can_move := false
 var _move_timer : float
 var _invincible : bool
 var _dead : bool
 var _invincivility_timer : float
+var _disabled : bool
+var _parent_spawner : EnemySpawner
 
 
-func _ready() -> void:
+func inicialize(parent_spawner : EnemySpawner) -> void:
 	var _err := connect("area_entered",self,"_on_collision")
 	_err = connect("body_entered",self,"_on_collision_body")
+	_err = connect("area_exited",self,"_on_area_exited")
+	
+	_parent_spawner = parent_spawner
+	
 	_dead = false
 	_invincible = false
 	_invincivility_timer = Constants.ENEMY_INVINCIBILITY_TIME
+	_can_move = true
 	
 func _hitstop():
 	_move_timer = Constants.HITSTOP_TIME
@@ -31,9 +38,22 @@ func _disable_movement():
 func _reenable_movement():
 	_can_move = true
 	
+func _disable_enemy():
+	visible = false
+	_disabled = true
+	set_physics_process(false)
+	set_process(false)	
+
+func _reenable_enemy():
+	visible = true
+	_disabled = false
+	set_physics_process(true)
+	set_process(true)	
+	
 func take_damage(var damage_taken : int) -> void:
 	_disable_movement()	
 	health -= damage_taken
+	AudioManager.play_sfx(hitAudioEvent)
 	if health <= 0:
 		_dead = true;
 		_die()
@@ -52,15 +72,24 @@ func _check_invincibility(delta):
 			_invincible = false
 
 func _on_collision(area : Area2D):
+	
 	#print("Colisão de Area com ", area.name)
 	if area.collision_layer == Constants.BEAM_LAYER:
-		if !_invincible:
+		if !_invincible and !_disabled and !_dead:
 			take_damage(1)
+	elif area.collision_layer == Constants.CAMERA_LAYER:
+		if _disabled:
+			_reenable_enemy()
 	pass	
 
-func _on_collision_body(node : Node):
+func _on_collision_body(_node : Node):
 	#print("Colisão de Body com ", node.name)
-	pass	
+	pass
+
+func _on_area_exited(area : Area2D):
+	if area.collision_layer == Constants.CAMERA_LAYER:
+		_disable_enemy()
+	pass		
 
 func _process(_delta):
 	pass
@@ -81,6 +110,7 @@ func _movement(_delta : float):
 	pass
 	
 func _die() -> void:
+	_parent_spawner.enemy_defeated()
 	queue_free()
 	pass
 
