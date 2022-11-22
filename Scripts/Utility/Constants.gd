@@ -1,0 +1,9 @@
+extends Node
+
+
+var PLAYER_LAYER := 1
+var ENEMY_LAYER := 2
+var ENVIRONMENT_LAYER := 4
+var BEAM_LAYER := 8
+var INITIAL_ENERGY := 30
+var INVINCIBILITY_TIME := 2 

@@ -3,31 +3,34 @@
 [ext_resource path="res://Sprites/Samus/SamusSpriteframes.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/PlayerAnimation.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=3]
-[ext_resource path="res://Sprites/Samus/Samus 2.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/PlayerControl/PlayerEnergy.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/PlayerControl/CannonControl.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 16 )
+extents = Vector2( 8, 15.5 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 7
+collision_mask = 6
 script = ExtResource( 3 )
-run_speed = 50.0
+run_speed = 87.0
+jump_speed = 20
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "idle"
-flip_h = true
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 6
+script = ExtResource( 4 )
+
+[node name="CollisionPlayerArea2d" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 0.5 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 4 )
-hframes = 5
-vframes = 3
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 1 )
 
 [node name="Cannon" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -43,3 +46,5 @@ position = Vector2( 4, -17 )
 
 [node name="LeftPos" type="Node2D" parent="Cannon"]
 position = Vector2( -12, -5 )
+
+[connection signal="enemy_contact" from="Area2D" to="." method="_on_enemy_contact"]
