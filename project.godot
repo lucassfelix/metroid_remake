@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/PlayerControl/Beam.gd"
 }, {
-"base": "Node",
-"class": "Cannon",
-"language": "GDScript",
-"path": "res://Scripts/Cannon.gd"
-}, {
 "base": "Node2D",
 "class": "CannonControl",
 "language": "GDScript",
@@ -32,38 +27,56 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Scripts/Enemy.gd"
+"path": "res://Scripts/Enemies/Enemy.gd"
+}, {
+"base": "AudioEvent",
+"class": "MP3AudioEvent",
+"language": "GDScript",
+"path": "res://Scripts/Utility/MP3AudioEvent.gd"
 }, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
-"path": "res://Scripts/State.gd"
+"path": "res://Scripts/Utility/State.gd"
+}, {
+"base": "Control",
+"class": "TitleManager",
+"language": "GDScript",
+"path": "res://Scripts/UI/TitleManager.gd"
+}, {
+"base": "AudioEvent",
+"class": "WavAudioEvent",
+"language": "GDScript",
+"path": "res://Scripts/Utility/WavAudioEvent.gd"
 }, {
 "base": "Enemy",
 "class": "ZoomerBehaviour",
 "language": "GDScript",
-"path": "res://Scripts/ZoomerBehaviour.gd"
+"path": "res://Scripts/Enemies/ZoomerBehaviour.gd"
 } ]
 _global_script_class_icons={
 "AudioEvent": "",
 "Beam": "",
-"Cannon": "",
 "CannonControl": "",
 "Enemy": "",
+"MP3AudioEvent": "",
 "State": "",
+"TitleManager": "",
+"WavAudioEvent": "",
 "ZoomerBehaviour": ""
 }
 
 [application]
 
 config/name="Metroid Remake"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/MainGame.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 ScreenRescale="*res://Scripts/UI/ScreenRescale.gd"
 Constants="*res://Scripts/Utility/Constants.gd"
+AudioManager="*res://Scripts/Utility/AudioManager.gd"
 
 [debug]
 

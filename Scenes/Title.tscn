@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Sprites/UI/Title screen.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Prefabs/Stars/Star.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/UI/TitleManager.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Resources/AudioEvents/Music/TitleMusic.tres" type="Resource" id=2]
+[ext_resource path="res://Assets/Sprites/UI/Title screen.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Star.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -50,12 +52,12 @@ anchor_bottom = 1.0
 [node name="Title" type="Control" parent="."]
 margin_right = 256.0
 margin_bottom = 240.0
+script = ExtResource( 1 )
+titleSong = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Title"]
 position = Vector2( 128, 120 )
 frames = SubResource( 9 )
-frame = 7
-playing = true
 
 [node name="Stars" type="Node" parent="."]
 

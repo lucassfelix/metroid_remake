@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Brinstar.mp3-45cd3b364e8f64127f623a6c536c03ac.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/MP3/Brinstar.mp3"
+dest_files=[ "res://.import/Brinstar.mp3-45cd3b364e8f64127f623a6c536c03ac.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

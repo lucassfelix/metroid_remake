@@ -1,8 +1,6 @@
 class_name CannonControl
 extends Node2D
 
-const DELAY_BETWEEN_SHOTS : float = 0.13;
-
 export var beam_prefab: PackedScene = preload("res://Scenes/Prefabs/Beam.tscn")
 
 var can_shoot : bool = true;
@@ -31,7 +29,7 @@ func set_beam_direction(flipH : bool, up:bool):
 			
 
 func delay_shot():
-	yield(get_tree().create_timer(DELAY_BETWEEN_SHOTS),"timeout");
+	yield(get_tree().create_timer(Constants.DELAY_BETWEEN_SHOTS),"timeout");
 	can_shoot = true;
 
 func on_shoot_pressed():
@@ -47,8 +45,7 @@ func on_shoot_pressed():
 		
 		new_beam.init(global_position,_direction,self)
 	
-func _process(delta):
+func _process(_delta):
 	var shoot_pressed = Input.is_action_pressed("shoot")
-	
 	if shoot_pressed:
 		on_shoot_pressed()

@@ -2,17 +2,12 @@ extends Node
 
 var _audioStreamPool : Array
 var _avaliablePool : Array
-var _musicStream : AudioStreamMP3
+var _musicStreamPlayer : AudioStreamPlayer
 
 func _ready():
 	
-	_musicStream = load("res://SoundFiles/BG_Music.mp3")
-	
-	var newMusicStream := AudioStreamPlayer.new()
-	add_child(newMusicStream)
-#	newMusicStream.volume_db = -15
-	newMusicStream.stream = _musicStream
-	newMusicStream.play()
+	_musicStreamPlayer = AudioStreamPlayer.new()
+	add_child(_musicStreamPlayer)
 	
 	for i in range(10):
 		var newAudioStream := _create_audio_stream(i)
@@ -26,7 +21,7 @@ func _create_audio_stream(var index : int) -> AudioStreamPlayer:
 	add_child(newAudioStream)
 	return newAudioStream
 
-func play(soundClip : AudioEvent) -> void:
+func play_sfx(soundEvent : WavAudioEvent) -> void:
 	
 	var audioStream : AudioStreamPlayer = null
 	
@@ -41,11 +36,18 @@ func play(soundClip : AudioEvent) -> void:
 		_avaliablePool.append(false)
 		
 			
-	audioStream.stream = soundClip.WavAudioClip
-	audioStream.volume_db = soundClip.volume_dB
-	audioStream.pitch_scale = soundClip.pitch
+	audioStream.stream = soundEvent.WavAudioClip
+	audioStream.volume_db = soundEvent.volume_dB
+	audioStream.pitch_scale = soundEvent.pitch
 	audioStream.play()
 	
+func play_music(musicEvent : MP3AudioEvent) -> void:
+	
+	_musicStreamPlayer.stop()
+	_musicStreamPlayer.stream = musicEvent.MP3AudioClip
+	_musicStreamPlayer.volume_db = musicEvent.volume_dB
+	_musicStreamPlayer.pitch_scale = musicEvent.pitch
+	_musicStreamPlayer.play()
 	
 
 func _on_Audio_Finished(var index : int):

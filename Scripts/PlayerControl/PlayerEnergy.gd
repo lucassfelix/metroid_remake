@@ -10,9 +10,9 @@ signal game_over()
 
 func _ready():
 	_energy = Constants.INITIAL_ENERGY
-	_invincivility_timer = Constants.INVINCIBILITY_TIME
+	_invincivility_timer = Constants.PLAYER_INVINCIBILITY_TIME
 	_invincible = false
-	connect("area_entered",self,"_on_area_entered")
+	var _err := connect("area_entered",self,"_on_area_entered")
 	emit_signal("health_changed",_energy)
 
 func _physics_process(delta):
@@ -20,7 +20,7 @@ func _physics_process(delta):
 
 func _activate_invincibility():
 	_invincible = true
-	_invincivility_timer = Constants.INVINCIBILITY_TIME
+	_invincivility_timer = Constants.PLAYER_INVINCIBILITY_TIME
 
 func _check_invincibility(delta):
 	if _invincible:
