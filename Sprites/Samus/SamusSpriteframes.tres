@@ -1,9 +1,10 @@
-[gd_resource type="SpriteFrames" load_steps=23 format=2]
+[gd_resource type="SpriteFrames" load_steps=24 format=2]
 
 [ext_resource path="res://Sprites/Samus/Samus aim up.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Samus/Samus.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Samus/SamusFront.png" type="Texture" id=3]
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 40 )
 
@@ -23,7 +24,7 @@ region = Rect2( 80, 0, 32, 40 )
 atlas = ExtResource( 1 )
 region = Rect2( 120, 0, 32, 40 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 8, 32, 32 )
 
@@ -85,7 +86,7 @@ region = Rect2( 120, 48, 32, 32 )
 
 [resource]
 animations = [ {
-"frames": [ SubResource( 16 ) ],
+"frames": [ SubResource( 22 ) ],
 "loop": true,
 "name": "aim-up",
 "speed": 5.0
@@ -100,7 +101,12 @@ animations = [ {
 "name": "aim-up-walk",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 1 ) ],
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 21 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
