@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Sprites/UI/Spark FX.png" type="Texture" id=1]
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 1 )
+region = Rect2( 9, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 1 )
+region = Rect2( 27, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 1 )
+region = Rect2( 18, 0, 8, 8 )
+
+[resource]
+animations = [ {
+"frames": [ SubResource( 32 ) ],
+"loop": false,
+"name": "down-left",
+"speed": 0.0
+}, {
+"frames": [ SubResource( 30 ) ],
+"loop": false,
+"name": "down-right",
+"speed": 0.0
+}, {
+"frames": [ SubResource( 33 ) ],
+"loop": false,
+"name": "up-left",
+"speed": 0.0
+}, {
+"frames": [ SubResource( 34 ) ],
+"loop": false,
+"name": "up-right",
+"speed": 0.0
+} ]

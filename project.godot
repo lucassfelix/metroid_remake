@@ -78,16 +78,16 @@ ScreenRescale="*res://Scripts/UI/ScreenRescale.gd"
 Constants="*res://Scripts/Utility/Constants.gd"
 AudioManager="*res://Scripts/Utility/AudioManager.gd"
 
-[debug]
-
-settings/fps/force_fps=30
-
 [display]
 
 window/size/width=256
 window/size/height=240
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[global]
+
+fps=false
 
 [gui]
 

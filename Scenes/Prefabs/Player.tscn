@@ -17,7 +17,8 @@ jump_speed = 20
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
-animation = "idle"
+animation = "front"
+frame = 1
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]

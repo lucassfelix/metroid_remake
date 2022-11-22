@@ -1,0 +1,194 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/Sparks.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Assets/Sprites/UI/Explosion FX.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=22]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, -8 ), Vector2( 128, 120 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8, -8 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 264, -8 ), Vector2( 128, 120 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8, -8 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, 248 ), Vector2( 128, 120 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8, -8 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 264, 248 ), Vector2( 128, 120 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8, -8 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 2 )
+region = Rect2( 40, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 0, 40, 40 )
+
+[sub_resource type="SpriteFrames" id=33]
+animations = [ {
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Sparks" type="Node"]
+
+[node name="Spark" type="AnimatedSprite" parent="."]
+position = Vector2( -8, -8 )
+z_index = 2
+frames = ExtResource( 1 )
+animation = "down-right"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spark"]
+autoplay = "Move"
+anims/Move = SubResource( 22 )
+anims/RESET = SubResource( 23 )
+
+[node name="Spark2" type="AnimatedSprite" parent="."]
+position = Vector2( -8, -8 )
+z_index = 2
+frames = ExtResource( 1 )
+animation = "down-left"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spark2"]
+autoplay = "Move"
+anims/Move = SubResource( 24 )
+anims/RESET = SubResource( 25 )
+
+[node name="Spark3" type="AnimatedSprite" parent="."]
+position = Vector2( -8, -8 )
+z_index = 2
+frames = ExtResource( 1 )
+animation = "up-right"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spark3"]
+autoplay = "Move"
+anims/Move = SubResource( 26 )
+anims/RESET = SubResource( 27 )
+
+[node name="Spark4" type="AnimatedSprite" parent="."]
+position = Vector2( -8, -8 )
+z_index = 2
+frames = ExtResource( 1 )
+animation = "up-left"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spark4"]
+autoplay = "Move"
+anims/Move = SubResource( 28 )
+anims/RESET = SubResource( 29 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 128, 128 )
+frames = SubResource( 33 )
