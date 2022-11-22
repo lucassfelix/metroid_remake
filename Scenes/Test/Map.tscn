@@ -40,4 +40,4 @@ editor_draw_drag_margin = true
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
-[connection signal="health_changed" from="Player" to="HUD" method="_on_Player_health_changed"]
+[connection signal="change_ui_energy" from="Player" to="HUD" method="_on_Player_change_ui_energy"]

@@ -13,6 +13,7 @@ func _ready():
 	_invincivility_timer = Constants.INVINCIBILITY_TIME
 	_invincible = false
 	connect("area_entered",self,"_on_area_entered")
+	emit_signal("health_changed",_energy)
 
 func _physics_process(delta):
 	_check_invincibility(delta)
@@ -33,7 +34,7 @@ func _take_damage():
 		emit_signal("game_over")
 	else:
 		emit_signal("health_changed", _energy)
-		
+		_activate_invincibility()
 
 func _on_area_entered(area):
 	if area.collision_layer == Constants.ENEMY_LAYER:
