@@ -11,8 +11,22 @@ export (Resource) var jumpAudioEvent
 var _velocity : Vector2
 var jumping = false
 var debugIncrement : Vector2
+var _disabled : bool
 
 signal change_ui_energy(_energy)
+
+func _ready():
+	_disable()
+
+func _disable():
+	_disabled = true
+	set_physics_process(false)
+	set_process(false)	
+
+func _reenable():
+	_disabled = false
+	set_physics_process(true)
+	set_process(true)
 
 func get_input():
 	var right = Input.is_action_pressed("walk_right")

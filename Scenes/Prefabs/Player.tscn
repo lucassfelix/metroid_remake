@@ -25,7 +25,6 @@ jumpAudioEvent = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
-frame = 1
 animation = "idle"
 flip_h = true
 script = ExtResource( 2 )

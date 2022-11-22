@@ -2,15 +2,17 @@ class_name EnemySpawner
 extends Node
 
 export (PackedScene) var enemy_prefab
+export (bool) var spawnAtReady
 
 var _isAlive : bool
 var _disabled : bool
 
 func _ready():
 	_isAlive = false
+	if !spawnAtReady:
+		_disabled = true
 	var _err := connect("area_entered",self,"_on_area_entered")
 	_err = connect("area_exited",self,"_on_area_exited")
-	_spawn_enemy()
 	
 func _spawn_enemy():
 	var new_enemy = enemy_prefab.instance()
@@ -36,6 +38,7 @@ func enemy_defeated():
 func _on_area_entered(area : Area2D):
 	if area.collision_layer == Constants.CAMERA_LAYER:
 		if _disabled:
+			print("ENTROU")
 			_reenable()
 	pass	
 

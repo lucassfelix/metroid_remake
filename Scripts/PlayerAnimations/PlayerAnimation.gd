@@ -4,17 +4,30 @@ var speed : float = 100
 var _grounded : bool
 var _walked : bool
 var _shouldWalk : bool
+var _disabled : bool
 
 export (Resource) var walkAudioEvent
 
 func _ready():
 	_grounded = true
+	_disable()
 
 func _walking_sound():
 	#AudioManager.play_sfx(walkAudioEvent)
 	_walked = true
 	#yield(get_tree().create_timer(0.2),"timeout")
 	_walked = false
+	
+func _disable():
+	_disabled = true
+	set_physics_process(false)
+	set_process(false)	
+
+func _reenable():
+	_disabled = false
+	set_physics_process(true)
+	set_process(true)
+
 	
 func _process(_delta):
 	var walk_right = Input.is_action_pressed("walk_right")

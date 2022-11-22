@@ -1,12 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/BrinstarTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Scripts/Utility/MainSceneStart.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Prefabs/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Prefabs/SpawnerPrefab.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Resources/AudioEvents/Music/BrinstarMusic.tres" type="Resource" id=5]
+[ext_resource path="res://Assets/Resources/AudioEvents/Music/IntroMusic.tres" type="Resource" id=6]
 
 [node name="Root" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
+introAudioEvent = ExtResource( 6 )
+brinstarAudioEvent = ExtResource( 5 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -23,6 +29,26 @@ jump_speed = 250
 
 [node name="Spawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 184, 40 )
+spawnAtReady = true
 
 [node name="Spawner2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 88, 40 )
+spawnAtReady = true
+
+[node name="Spawner3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 424, 200 )
+
+[node name="Spawner4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 696, 120 )
+
+[node name="Spawner5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 807, 120 )
+
+[node name="Spawner6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1016, 120 )
+
+[node name="Spawner7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1240, 200 )
+
+[node name="Spawner8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1416, 200 )
