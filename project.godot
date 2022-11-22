@@ -57,6 +57,7 @@ config/icon="res://icon.png"
 [autoload]
 
 ScreenRescale="*res://Scripts/UI/ScreenRescale.gd"
+Constants="*res://Scripts/Utility/Constants.gd"
 
 [debug]
 
